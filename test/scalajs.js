@@ -17,5 +17,9 @@ TestCase('Seq Test', {
     var seq = ScalaJs.seq(1, 2, 3).filter(function(x) { return x == 2 })
     assertEquals(1, seq.length)
     assertEquals(2, seq[0])
+  },
+  'test foldLeft apply numbers': function() {
+    var sum = ScalaJs.seq(1, 2, 3).foldLeft(0, function(sum, x) { return sum + x })
+    assertEquals(6, sum)
   }
 })

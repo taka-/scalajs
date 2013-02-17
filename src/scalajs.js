@@ -4,6 +4,14 @@ ScalaJs.seq = function() {
   var Seq = function(){}
   Seq.prototype = new Array()
 
+  Seq.prototype.foldLeft = function(b, f) {
+    var result = b
+    for (var i = 0; i < this.length; i++) {
+      result = f(result, this[i])
+    }
+    return result
+  }
+   
   Seq.prototype.map = function(f) {
     var result = new Seq()
     for (var i = 0; i < this.length; i++) {
