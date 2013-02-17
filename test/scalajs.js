@@ -32,5 +32,14 @@ TestCase('Seq Test', {
   'test find return null if seq has no element which function return true': function() {
     var result = ScalaJs.seq(1, 2, 3).find(function(x){return x == 5})
     assertEquals(null, result)
+  },
+  'test foreach': function() {
+    /*:DOC += <div id="1"></div><div id="2"></div> */
+    ScalaJs.seq(1, 2).foreach(function(x) {
+      var div = document.getElementById(x)
+      div.innerHTML = x
+    })
+    assertEquals(1, document.getElementById(1).innerHTML)
+    assertEquals(2, document.getElementById(2).innerHTML)
   }
 })

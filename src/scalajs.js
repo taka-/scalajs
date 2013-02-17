@@ -49,6 +49,12 @@ ScalaJs.seq = function() {
     return null;
   }
 
+  Seq.prototype.foreach = function(f) {
+    for (var i = 0; i < this.length; i++) {
+      f(this[i])
+    }
+  }
+
   var seq = new Seq()
   for (var i = 0; i < arguments.length; i++) {
     seq.push(arguments[i])
