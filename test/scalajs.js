@@ -21,5 +21,9 @@ TestCase('Seq Test', {
   'test foldLeft apply numbers': function() {
     var sum = ScalaJs.seq(1, 2, 3).foldLeft(0, function(sum, x) { return sum + x })
     assertEquals(6, sum)
+  },
+  'test foldLeft with one parameters, only function': function() {
+    var sum = ScalaJs.seq(1, 2, 3).foldLeft(function(sum, x) { return sum + x })
+    assertEquals(6, sum)
   }
 })

@@ -4,12 +4,22 @@ ScalaJs.seq = function() {
   var Seq = function(){}
   Seq.prototype = new Array()
 
-  Seq.prototype.foldLeft = function(b, f) {
-    var result = b
-    for (var i = 0; i < this.length; i++) {
-      result = f(result, this[i])
+  Seq.prototype.foldLeft = function() {
+    if (arguments.length == 2) {
+      var result = arguments[0]
+      var f = arguments[1]
+      for (var i = 0; i < this.length; i++) {
+        result = f(result, this[i])
+      }
+      return result
+    } else {
+      var f = arguments[0]
+      var result = this[0]
+      for (var i = 1; i < this.length; i++) {
+        result = f(result, this[i])
+      }
+      return result
     }
-    return result
   }
    
   Seq.prototype.map = function(f) {
