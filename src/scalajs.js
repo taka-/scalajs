@@ -12,6 +12,16 @@ ScalaJs.seq = function() {
     return result
   }
 
+  Seq.prototype.filter = function(f) {
+    var result = new Seq()
+    for (var i = 0; i < this.length; i++) {
+      if(f(this[i])) {
+        result.push(this[i])
+      }
+    }
+    return result
+  }
+
   var seq = new Seq()
   for (var i = 0; i < arguments.length; i++) {
     seq.push(arguments[i])
