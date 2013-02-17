@@ -4,6 +4,14 @@ ScalaJs.seq = function() {
   var Seq = function(){}
   Seq.prototype = new Array()
 
+  var foldLeft = function(seq, b, f) {
+    var result = b
+    for (var i = 0; i < seq.length; i++) {
+      result = f(result, seq[i])
+    }
+    return result
+  }
+
   Seq.prototype.foldLeft = function() {
     if (arguments.length == 2) {
       var result = arguments[0]
@@ -23,21 +31,13 @@ ScalaJs.seq = function() {
   }
    
   Seq.prototype.map = function(f) {
-    var result = new Seq()
-    for (var i = 0; i < this.length; i++) {
-      result.push(f(this[i]))
-    }
-    return result
+    return foldLeft(this, new Seq(),
+                    function(sum, x) {sum.push(f(x)); return sum})
   }
 
   Seq.prototype.filter = function(f) {
-    var result = new Seq()
-    for (var i = 0; i < this.length; i++) {
-      if(f(this[i])) {
-        result.push(this[i])
-      }
-    }
-    return result
+    return foldLeft(this, new Seq(),
+                    function(sum, x) { if(f(x)) { sum.push(x)}; return sum})
   }
 
   var seq = new Seq()
