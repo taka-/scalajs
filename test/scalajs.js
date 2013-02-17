@@ -24,5 +24,13 @@ TestCase('Seq Test', {
   },
   'test foldLeft with one parameters, only function': function() {
     var sum = ScalaJs.seq(1, 2, 3).foldLeft(0, function(sum, x) { return sum + x })
+  },
+  'test find return first element': function() {
+    var result = ScalaJs.seq(1, 2, 3).find(function(x){return x == 3})
+    assertEquals(3, result)
+  },
+  'test find return null if seq has no element which function return true': function() {
+    var result = ScalaJs.seq(1, 2, 3).find(function(x){return x == 5})
+    assertEquals(null, result)
   }
 })

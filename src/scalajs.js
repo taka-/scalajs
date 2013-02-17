@@ -40,6 +40,15 @@ ScalaJs.seq = function() {
                     function(sum, x) { if(f(x)) { sum.push(x)}; return sum})
   }
 
+  Seq.prototype.find = function(f) {
+    for (var i = 0; i < this.length; i++) {
+      if (f(this[i])) {
+        return this[i]
+      }
+    }
+    return null;
+  }
+
   var seq = new Seq()
   for (var i = 0; i < arguments.length; i++) {
     seq.push(arguments[i])
