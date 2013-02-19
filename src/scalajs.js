@@ -82,6 +82,11 @@ ScalaJs.seq = function() {
 
   }
 
+  Seq.prototype.distinct = function() {
+    return foldLeft(this, new Seq(),
+                    function(sum, x) { if(!sum.contains(x)) { sum.push(x)};return sum})
+  }
+
   var seq = new Seq()
   for (var i = 0; i < arguments.length; i++) {
     seq.push(arguments[i])

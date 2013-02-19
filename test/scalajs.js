@@ -58,5 +58,9 @@ TestCase('Seq Test', {
     assertTrue(ScalaJs.seq(2).equals(ScalaJs.seq(1, 2).diff(ScalaJs.seq(1))))
     assertTrue(ScalaJs.seq(2).equals(ScalaJs.seq(1, 2).diff(ScalaJs.seq(1, 3))))
     assertTrue(ScalaJs.seq().equals(ScalaJs.seq(1, 2).diff(ScalaJs.seq(1, 2))))
+  },
+  'test distinct': function() {
+    assertTrue(ScalaJs.seq(1, 2, 3).equals(ScalaJs.seq(1, 1, 2, 3).distinct()))
+    assertTrue(ScalaJs.seq().equals(ScalaJs.seq().distinct()))
   }
 })
