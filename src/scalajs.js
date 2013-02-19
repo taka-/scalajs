@@ -60,8 +60,8 @@ ScalaJs.seq = function() {
       if(this[i] == elem) {
         return true
       }
-      return false
     }
+    return false
   }
 
   Seq.prototype.equals = function(that) {
@@ -74,6 +74,12 @@ ScalaJs.seq = function() {
       }
     }
     return true
+  }
+
+  Seq.prototype.diff = function(that) {
+    return foldLeft(this, new Seq(),
+                    function(sum, x) {if(!that.contains(x)) { sum.push(x)}; return sum})
+
   }
 
   var seq = new Seq()

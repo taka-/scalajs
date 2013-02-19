@@ -45,6 +45,7 @@ TestCase('Seq Test', {
   'test contains': function() {
     assertEquals(true, ScalaJs.seq(1, 2, 3).contains(1))
     assertEquals(false, ScalaJs.seq(1, 2, 3).contains(4))
+    assertTrue(ScalaJs.seq(1, 2).contains(2))
   },
   'test equals': function() {
     assertTrue(ScalaJs.seq(1, 2, 3).equals(ScalaJs.seq(1, 2, 3)))
@@ -52,5 +53,10 @@ TestCase('Seq Test', {
     assertFalse(ScalaJs.seq(1, 2, 3).equals(ScalaJs.seq()))
     assertFalse(ScalaJs.seq().equals(ScalaJs.seq(1)))
     assertTrue(ScalaJs.seq().equals(ScalaJs.seq()))
+  },
+  'test diff': function() {
+    assertTrue(ScalaJs.seq(2).equals(ScalaJs.seq(1, 2).diff(ScalaJs.seq(1))))
+    assertTrue(ScalaJs.seq(2).equals(ScalaJs.seq(1, 2).diff(ScalaJs.seq(1, 3))))
+    assertTrue(ScalaJs.seq().equals(ScalaJs.seq(1, 2).diff(ScalaJs.seq(1, 2))))
   }
 })
