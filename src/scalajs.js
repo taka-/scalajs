@@ -64,6 +64,18 @@ ScalaJs.seq = function() {
     }
   }
 
+  Seq.prototype.equals = function(that) {
+    if (this.length != that.length) {
+      return false
+    }
+    for (var i = 0; i < this.length; i++) {
+      if (this[i] != that[i]) {
+        return false
+      }
+    }
+    return true
+  }
+
   var seq = new Seq()
   for (var i = 0; i < arguments.length; i++) {
     seq.push(arguments[i])
