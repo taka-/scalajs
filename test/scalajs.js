@@ -41,5 +41,9 @@ TestCase('Seq Test', {
     })
     assertEquals(1, document.getElementById(1).innerHTML)
     assertEquals(2, document.getElementById(2).innerHTML)
+  },
+  'test contains': function() {
+    assertEquals(true, ScalaJs.seq(1, 2, 3).contains(1))
+    assertEquals(false, ScalaJs.seq(1, 2, 3).contains(4))
   }
 })

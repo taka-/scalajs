@@ -55,6 +55,15 @@ ScalaJs.seq = function() {
     }
   }
 
+  Seq.prototype.contains = function(elem) {
+    for (var i = 0; i < this.length; i++) {
+      if(this[i] == elem) {
+        return true
+      }
+      return false
+    }
+  }
+
   var seq = new Seq()
   for (var i = 0; i < arguments.length; i++) {
     seq.push(arguments[i])
